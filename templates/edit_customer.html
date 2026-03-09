@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Customer</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Edit Customer</h1>
+        <form method="POST" class="p-4 border rounded bg-white shadow-sm">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" value="{{ customer.name }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="account_number" class="form-label">Account Number:</label>
+                <input type="text" id="account_number" name="account_number" class="form-control" value="{{ customer.account_number }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="account_type" class="form-label">Account Type:</label>
+                <select id="account_type" name="account_type" class="form-select" required>
+                    <option value="Turkey" {% if customer.account_type == 'Turkey' %}selected{% endif %}>Turkey</option>
+                    <option value="Longi" {% if customer.account_type == 'Longi' %}selected{% endif %}>Longi</option>
+                </select>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <a href="{{ url_for('show_all') }}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
